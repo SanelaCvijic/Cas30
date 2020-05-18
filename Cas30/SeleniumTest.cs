@@ -139,6 +139,37 @@ namespace Cas30
 
         }
 
+        [Test]
+        public void ChekIn()
+        {
+            Login();
+
+            IWebElement signIn = driver.FindElement(By.XPath("//a[@href='/cart']"));
+            if (signIn.Displayed && signIn.Enabled)
+            {
+
+                signIn.Click();
+
+            }
+
+            IWebElement alert = driver.FindElement(By.XPath("//div[@class='alert alert-warning']"));
+            if (alert.Displayed && alert.Enabled)
+            {
+
+               Assert.Pass();
+
+            }
+            else
+            {
+                Assert.Fail();
+            }
+
+
+
+        }
+
+
+
 
         private void Navigate(string url)
         {
