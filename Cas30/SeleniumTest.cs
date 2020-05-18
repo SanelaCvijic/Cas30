@@ -14,11 +14,14 @@ namespace Cas30
         IWebDriver driver;
         WebDriverWait wait;
 
+      
+
         [Test]
         public void Regitration()
         {
-            string email= "DDavidovic@jum.mdok";
+            string email = "DDavidovic@jum.mdok";
             string password = "LOzinka2589";
+            string korisnicko = "DaviDo";
 
             Navigate("http://shop.qa.rs//");
 
@@ -60,7 +63,7 @@ namespace Cas30
             if (inputUserName.Displayed && inputUserName.Enabled)
             {
 
-                inputUserName.SendKeys("DaviDo");
+                inputUserName.SendKeys(korisnicko);
 
             }
 
@@ -91,7 +94,48 @@ namespace Cas30
 
             }
 
+        }
 
+        [Test]
+        public void Login()
+        {
+            string email = "DDavidovic@jum.mdok";
+            string password = "LOzinka2589";
+            string korisnicko = "DaviDo";
+
+            Navigate("http://shop.qa.rs//");
+
+            IWebElement signIn = driver.FindElement(By.XPath("//a[@href='/login']"));
+            if (signIn.Displayed && signIn.Enabled)
+            {
+
+                signIn.Click();
+
+            }
+            IWebElement username = driver.FindElement(By.Name("username"));
+            if (username.Displayed && username.Enabled)
+            {
+
+                username.SendKeys(korisnicko);
+
+            }
+
+            IWebElement inputPassword = driver.FindElement(By.Name("password"));
+
+            if (inputPassword.Displayed && inputPassword.Enabled)
+            {
+
+                inputPassword.SendKeys(password);
+
+            }
+
+            IWebElement sigNIn = driver.FindElement(By.Name("login"));
+            if (sigNIn.Displayed && sigNIn.Enabled)
+            {
+
+                sigNIn.Click();
+
+            }
 
         }
 
